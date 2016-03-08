@@ -79,14 +79,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algos.h" />
     <ClInclude Include="fileFilter.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="lineSegment.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="algos.cpp" />
     <ClCompile Include="fileFilter.cpp" />
+    <ClCompile Include="graph.cpp" />
     <ClCompile Include="lineSegment.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="stdafx.cpp">

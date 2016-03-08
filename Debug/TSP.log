@@ -1,12 +1,16 @@
-﻿Build started 3/8/2016 1:05:57 PM.
+﻿Build started 3/8/2016 3:09:12 PM.
      1>Project "E:\github\TSP\TSP\TSP\TSP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\visualStudios\vs2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\TSP.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt TSP.cpp
+         E:\visualStudios\vs2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\TSP.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt TSP.cpp fileFilter.cpp
+         fileFilter.cpp
+     1>e:\github\tsp\tsp\tsp\filefilter.cpp(47): warning C4018: '<=' : signed/unsigned mismatch
          TSP.cpp
-     1>e:\github\tsp\tsp\tsp\linesegment.h(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>e:\github\tsp\tsp\tsp\tsp.cpp(29): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\github\tsp\tsp\tsp\tsp.cpp(33): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
        Link:
-         E:\visualStudios\vs2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\github\TSP\TSP\Debug\TSP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\github\TSP\TSP\Debug\TSP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\github\TSP\TSP\Debug\TSP.lib" /MACHINE:X86 Debug\fileFilter.obj
+         E:\visualStudios\vs2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\github\TSP\TSP\Debug\TSP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\github\TSP\TSP\Debug\TSP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\github\TSP\TSP\Debug\TSP.lib" /MACHINE:X86 Debug\algos.obj
+         Debug\fileFilter.obj
+         Debug\graph.obj
          Debug\lineSegment.obj
          Debug\point.obj
          Debug\stdafx.obj
@@ -16,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.76
+Time Elapsed 00:00:01.53

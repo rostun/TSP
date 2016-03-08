@@ -1,7 +1,7 @@
 #ifndef LINESEGMENT_H
 #define LINESEGMENT_H
 
-#include "Point.h"s
+#include "point.h"
  
 class LineSegment
 {

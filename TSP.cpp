@@ -8,6 +8,8 @@ using namespace std;
 #include "fileFilter.h" 
 #include "point.h"
 #include "lineSegment.h"
+#include "algos.h"
+#include "graph.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -19,6 +21,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	vector <int> cityID;
 	vector <int> myXCoords;
 	vector <int> myYCoords;
+	//make a 2d vector of x and y coordinates
+	vector<vector<int>> Graph;
 
 	cout << "Enter txt filename, don't put extension" << endl;
 	cin >> fileName; 
@@ -30,13 +34,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	{	
 		extractInts(myCities, place, cityID, myXCoords, myYCoords);
 	}
-
-	Point p1(myXCoords[0], myYCoords[0]);
-	Point p2(myXCoords[1], myYCoords[1]);
-	
-	LineSegment line (p1, p2);
-	cout << "distance: " << line.length() << endl;
-	cout << "Get End1: " << line.getEnd1().getXCoord() << endl;
 
 	return 0;
 }
