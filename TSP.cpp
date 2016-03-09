@@ -2,9 +2,6 @@
 //
 
 #include "stdafx.h"
-#include <iostream>
-#include <vector>
-using namespace std;
 
 #include "fileFilter.h" 
 #include "point.h"
@@ -40,11 +37,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	Graph greedySolution(theMap, theTour); //put in our vectors
 
-	for(unsigned int i = 0; i<theMap.size(); i++)
+	/*for(unsigned int i = 0; i<theMap.size(); i++)
 	{
 		cout << greedySolution.getPoints()[i].getCityID() << endl; //returns our cities we just made
-	}
+	}*/
 
+	greedySolution.greedyTSP(theMap, theTour);
 	return 0;
 }
 

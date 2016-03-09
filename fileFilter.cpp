@@ -1,7 +1,6 @@
 #include "stdafx.h"
 
 #include "fileFilter.h"
-#include <iostream>
 
 int openFile(ifstream& readFile, string fileName) {
 	//opens file, puts .txt at the end of it

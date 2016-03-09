@@ -1,9 +1,12 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "point.h"
+#include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
+
+#include "point.h"
 
 class Graph
 {
@@ -18,17 +21,6 @@ class Graph
 		vector<Point> getPoints();
 		vector<int> getThread();
 
-		//greedy algorithm
-			//int cityID;
-			//int smallestDistance;
-			//int tourDistance;
-			//
-			//start with cities[0] until cities.size()
-			//go through all the "cities" as long as "cities" is not empty
-				//calculate the distance from cities[i] to city[i->n]
-					//if(distance<smallestDistance)
-						//cityID = cities[whatever is smallest]
-						//tourDistance = smallestDistance
-						//reset variables
+		void greedyTSP(vector <Point> &points, vector<int> &thread);
 };
 #endif

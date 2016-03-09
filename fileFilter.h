@@ -1,4 +1,3 @@
-#pragma once
 /*
 filter.h
 Created by Rosa Tung on 1.19.16
@@ -8,6 +7,7 @@ Last Modified by Group: 1.31.16
 #ifndef FILEFILTER_H
 #define FILEFILTER_H
 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>

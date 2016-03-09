@@ -1,7 +1,6 @@
 #include "stdafx.h"
 
 #include "Point.h"
-#include <iostream>
 
 Point::Point() //no initial values to set
 {
