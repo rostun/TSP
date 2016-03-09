@@ -10,6 +10,7 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	ifstream readFile;
+	ofstream writeFile;
 	string fileName;
 
 	vector <string> myCities;
@@ -42,7 +43,13 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << greedySolution.getPoints()[i].getCityID() << endl; //returns our cities we just made
 	}*/
 
-	greedySolution.greedyTSP(theMap);
+	int tourDistance;
+	tourDistance = greedySolution.greedyTSP(theMap);
+	
+	writeFile.open(fileName + ".txt.tour");
+	outputFile(theMap, tourDistance, writeFile);
+	writeFile.close();
+
 	return 0;
 }
 

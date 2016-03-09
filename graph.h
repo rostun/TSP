@@ -21,7 +21,7 @@ class Graph
 		vector<Point> getPoints();
 		vector<int> getThread();
 
-		void greedyTSP(vector <Point> &points);
+		int greedyTSP(vector <Point> &points);
 		void greedy2OPTTSP(vector <Point>&points, int &tourDistance);
 		int calculateTourDistance(vector <Point> &points);
 };

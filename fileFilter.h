@@ -14,9 +14,11 @@ Last Modified by Group: 1.31.16
 #include <cstdlib>
 using namespace std;
 
+#include "point.h"
+
 int openFile(ifstream& readFile, string fileName);
 void extractLines(ifstream& readFile, string fileName, vector<string> &myArrays);
 void extractInts(vector<string> &myArrays, int row, vector<int> &paArray);
-void outputFile(vector<string> const &myArrays, int const row, vector<int> const &paArray, int const &leftIdx, int const &rightIdx, ofstream& writeFile);
+void outputFile(vector <Point>&points, int tourDistance, ofstream& writeFile);
 
 #endif // FILEFILTER_H_INCLUDED

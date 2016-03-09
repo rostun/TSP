@@ -45,15 +45,18 @@ void extractInts(vector<string> &myArrays, int row, vector<int> &paArray) {//als
 	for (int place = 0; place<=line.size(); place++)
 	{
 		if(line[place] == ' ' || place == line.size()) {
-			num = atoi(number.c_str());
-			paArray.push_back(num);
-			if(counter == 3){
-				counter = 0;
+			if(number.size() > 0)
+			{
+				num = atoi(number.c_str());
+				paArray.push_back(num);
+				if(counter == 3){
+					counter = 0;
+				}
+				else{
+					counter++;
+				}
+				number.clear();
 			}
-			else{
-				counter++;
-			}
-			number.clear();
 		}
 		else{
 			number.push_back(line[place]); //keep pushing back characters
@@ -61,16 +64,11 @@ void extractInts(vector<string> &myArrays, int row, vector<int> &paArray) {//als
 	}
 }
 
-void outputFile(vector<string> const &myArrays, int const row, vector<int> const &paArray, int const &leftIdx, int const &rightIdx, ofstream& writeFile) {
-	writeFile << myArrays[row] << endl;
-	writeFile << "[";													//cout << "outputting" << endl;
-	for (int place = leftIdx; place<rightIdx + 1; place++) {
-		if (place == rightIdx) {
-			writeFile << paArray[place];
-		}
-		else {
-			writeFile << paArray[place] << ", ";
-		}
+void outputFile(vector <Point>&points, int tourDistance, ofstream& writeFile) {
+	cout << "outputting" << endl;
+	writeFile << tourDistance << endl;
+	for (unsigned int place = 0; place < points.size(); place++) 
+	{
+		writeFile << points[place].getCityID() << endl;
 	}
-	writeFile << "]" << endl;
 }
