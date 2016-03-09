@@ -30,14 +30,13 @@ void extractLines(ifstream& readFile, string fileName, vector<string> &myArrays)
 		if (line.size() != 0)
 		{
 			myArrays.push_back(line);
-			cout << line << endl;
 		}
 	}
 
 	readFile.close();
 }
 
-void extractInts(vector<string> &myArrays, int row, vector<int> &paArray, vector<int> &pXArray, vector<int> &pYArray) {//also can check if character is numeric
+void extractInts(vector<string> &myArrays, int row, vector<int> &paArray) {//also can check if character is numeric
 	string line = myArrays[row];
 	
 	string number;
@@ -48,17 +47,13 @@ void extractInts(vector<string> &myArrays, int row, vector<int> &paArray, vector
 	{
 		if(line[place] == ' ' || place == line.size()) {
 			num = atoi(number.c_str());
-			if(counter == 0){ //its a city
-				paArray.push_back(num); //push back city vector
-			} 
-			else if(counter == 1){ //its a X coordinate
-				pXArray.push_back(num); //push back X vector
+			paArray.push_back(num);
+			if(counter == 3){
+				counter = 0;
 			}
-			else if(counter == 2){
-				num = atoi(number.c_str());
-				pYArray.push_back(num); //push back Y vector
+			else{
+				counter++;
 			}
-			counter++;
 			number.clear();
 		}
 		else{

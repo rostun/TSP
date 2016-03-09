@@ -16,7 +16,7 @@ using namespace std;
 
 int openFile(ifstream& readFile, string fileName);
 void extractLines(ifstream& readFile, string fileName, vector<string> &myArrays);
-void extractInts(vector<string> &myArrays, int row, vector<int> &paArray, vector<int> &pXArray, vector<int> &pYArray);
+void extractInts(vector<string> &myArrays, int row, vector<int> &paArray);
 void outputFile(vector<string> const &myArrays, int const row, vector<int> const &paArray, int const &leftIdx, int const &rightIdx, ofstream& writeFile);
 
 #endif // FILEFILTER_H_INCLUDED

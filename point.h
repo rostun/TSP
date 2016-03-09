@@ -6,15 +6,22 @@
 class Point
 {
 	private:
-		int x, y;
+		int city;
+		int x;
+		int y;
 	public:
 		Point();
-		Point(int xCoord, int yCoord);
+		Point(int cityID, int xCoord, int yCoord);
+
+		void setCityCoord(int cityID);
 		void setXCoord(int xCoord);
 		void setYCoord(int yCoord);
-		int getXCoord() const;//const so they are not altered
-		int getYCoord() const;
-		double distanceTo(const Point& c);//Point& to save memory and time
+		
+		int getCityID();
+		int getXCoord();
+		int getYCoord();
+
+		int distanceTo(Point& c);
 };
 
 #endif
