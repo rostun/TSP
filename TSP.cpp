@@ -42,7 +42,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << greedySolution.getPoints()[i].getCityID() << endl; //returns our cities we just made
 	}*/
 
-	greedySolution.greedyTSP(theMap, theTour);
+	greedySolution.greedyTSP(theMap);
 	return 0;
 }
 
