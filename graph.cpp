@@ -36,7 +36,7 @@ int Graph::greedyTSP(vector <Point> &points)
 	int ID;
 	int smallestDistance = 32767; //largest int
 	int tourDistance = 0;
-	
+
 	int testDistance; //sort the points by distance
 	unsigned int i = 0;
 	int cityHolder;
@@ -57,7 +57,7 @@ int Graph::greedyTSP(vector <Point> &points)
 		}
 
 		tourDistance += smallestDistance; //cout << "		Tour so far: " << tourDistance << endl;
-		smallestDistance = 32767;	
+		smallestDistance = 32767;
 		iter_swap(points.begin() + i + 1, points.begin() + cityHolder); // swap (i+1) and j
 		//for(int k = 0; k < points.size(); k++){cout << points[k].getCityID() << "|";}
 		//cout << endl;
@@ -69,8 +69,40 @@ int Graph::greedyTSP(vector <Point> &points)
 
 	cout << "this should be the same: " << calculateTourDistance(points) << endl;
 	cout << "improving tourDistance"<< endl;
-	greedy2OPTTSP(points, tourDistance);
+	greedy2OPTPair(points, tourDistance);
+        greedy2OPTTSP(points, tourDistance);
 	return tourDistance;
+}
+
+void Graph::greedy2OPTPair(vector <Point>&points, int &tourDistance)
+{
+	int changeDistance;
+	int ACBD; //edges to be tested
+	int ABCD;
+
+	//0 and 1, 1 and 2, 2 and 3,..., 75 and 0
+	for(unsigned int i = 0; i < points.size() - 2; i+=2)
+	{
+		ABCD = points[i].distanceTo(points[i+1]) + points[i+2].distanceTo(points[i+3]); //ABCD
+		ACBD = points[i].distanceTo(points[i+2]) + points[i+1].distanceTo(points[i+3]); //ACBD
+
+		cout << "ACBD and ABCD: " << ACBD <<" " << ABCD << endl;
+		if(ACBD < ABCD) //[1-2-3-4]-5-6
+		{
+			cout << "is this ever happening" << endl;
+			changeDistance = ABCD-ACBD;
+			tourDistance = tourDistance-changeDistance;
+			iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c
+			if(calculateTourDistance(points) > tourDistance)
+			{
+				iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c back
+				tourDistance = tourDistance + changeDistance;
+			}
+		}
+	}
+	cout << "New Tour Distance: " << tourDistance << endl;
+	cout << "checking new tour distance: " << calculateTourDistance(points) << endl;
+	tourDistance = calculateTourDistance(points);
 }
 
 
@@ -81,11 +113,11 @@ void Graph::greedy2OPTTSP(vector <Point>&points, int &tourDistance)
 	int ABCD;
 
 	//0 and 1, 1 and 2, 2 and 3,..., 75 and 0
-	for(unsigned int i = 0; i < points.size()-2; i+=2)
+	for(unsigned int i = 0; i < points.size(); i++)
 	{
 		ABCD = points[i].distanceTo(points[i+1]) + points[i+2].distanceTo(points[i+3]); //ABCD
 		ACBD = points[i].distanceTo(points[i+2]) + points[i+1].distanceTo(points[i+3]); //ACBD
-		
+
 		cout << "ACBD and ABCD: " << ACBD <<" " << ABCD << endl;
 		if(ACBD < ABCD) //[1-2-3-4]-5-6
 		{
@@ -93,10 +125,16 @@ void Graph::greedy2OPTTSP(vector <Point>&points, int &tourDistance)
 			changeDistance = ABCD-ACBD;
 			tourDistance = tourDistance-changeDistance;
 			iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c
+			if(calculateTourDistance(points) > tourDistance)
+			{
+				iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c back
+				tourDistance = tourDistance + changeDistance;
+			}
 		}
 	}
 	cout << "New Tour Distance: " << tourDistance << endl;
 	cout << "checking new tour distance: " << calculateTourDistance(points) << endl;
+	tourDistance = calculateTourDistance(points);
 }
 
 //calculate tour distance

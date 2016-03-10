@@ -11,8 +11,8 @@ using namespace std;
 class Graph
 {
 	private:
-		vector <Point> cities; 
-		vector <int> tour; 
+		vector <Point> cities;
+		vector <int> tour;
 	public:
 		Graph();
 		Graph(const vector <Point> &points, const vector<int> &thread);
@@ -22,6 +22,7 @@ class Graph
 		vector<int> getThread();
 
 		int greedyTSP(vector <Point> &points);
+		void greedy2OPTPair(vector <Point>&points, int &tourDistance);
 		void greedy2OPTTSP(vector <Point>&points, int &tourDistance);
 		int calculateTourDistance(vector <Point> &points);
 };
