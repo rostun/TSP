@@ -1,6 +1,4 @@
-#include "stdafx.h"
-
-#include "Point.h"
+#include "point.h"
 
 Point::Point() //no initial values to set
 {
@@ -45,5 +43,5 @@ int Point::getYCoord()//returns value for YCoord
 
 int Point::distanceTo(Point& c)//Returns the distance between 2 points
 {
-	return (sqrt(pow((c.getXCoord() - getXCoord()),2) + (pow ((c.getYCoord() - getYCoord()), 2))));
+	return (sqrt(pow((c.getXCoord() - getXCoord()),2) + (pow ((c.getYCoord() - getYCoord()), 2)))) + .5;
 }

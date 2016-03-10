@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "fileFilter.h"
 
 int openFile(ifstream& readFile, string fileName) {

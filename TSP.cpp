@@ -1,13 +1,15 @@
 // TSP.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <chrono>
+#include <ctime>
+using namespace std::chrono;
 
 #include "fileFilter.h" 
 #include "point.h"
 #include "graph.h"
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
 	ifstream readFile;
 	ofstream writeFile;
@@ -44,9 +46,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	}*/
 
 	int tourDistance;
-	tourDistance = greedySolution.greedyTSP(theMap);
+    
+        high_resolution_clock::time_point t1 = high_resolution_clock::now();
 	
-	writeFile.open(fileName + ".txt.tour");
+    tourDistance = greedySolution.greedyTSP(theMap);
+       
+        high_resolution_clock::time_point t2 = high_resolution_clock::now();
+        duration<double> time_span1 = duration_cast<duration<double>>(t2 - t1);
+		cout << "Time: " << time_span1.count() << endl;
+    writeFile.open(fileName + ".txt.tour");
 	outputFile(theMap, tourDistance, writeFile);
 	writeFile.close();
 
