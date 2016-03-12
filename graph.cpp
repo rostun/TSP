@@ -8,7 +8,7 @@ Graph::Graph()
 Graph::Graph(const vector <Point> &points, const vector<int> &thread)
 {
 	setCities(points);
-	setTours(thread);
+	setTours(thread); //didn't use
 }
 
 void Graph::setCities(const vector <Point> &points)
@@ -28,7 +28,7 @@ vector<Point> Graph::getPoints()
 
 vector<int> Graph::getThread()
 {
-	return tour;
+	return tour; //didn't use
 }
 
 int Graph::greedyTSP(vector <Point> &points)
@@ -81,39 +81,39 @@ void Graph::greedy2OPTPair(vector <Point>&points, int &tourDistance)
 	int ABCD;
 
 	//0 and 1, 1 and 2, 2 and 3,..., 75 and 0
-	for(unsigned int i = 0; i < points.size() - 2; i+=2)
+	for(unsigned int i = 0; i < points.size() - 2; i+=2) //go through by two's
 	{
 		ABCD = points[i].distanceTo(points[i+1]) + points[i+2].distanceTo(points[i+3]); //ABCD
 		ACBD = points[i].distanceTo(points[i+2]) + points[i+1].distanceTo(points[i+3]); //ACBD
 
 		cout << "ACBD and ABCD: " << ACBD <<" " << ABCD << endl;
 		if(ACBD < ABCD) //[1-2-3-4]-5-6
-		{
+		{ //we see a potential improvement, so swap cities
 			cout << "is this ever happening" << endl;
 			changeDistance = ABCD-ACBD;
 			tourDistance = tourDistance-changeDistance;
 			iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c
 			if(calculateTourDistance(points) > tourDistance)
 			{
-				iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c back
+				iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c back if not actually improved
 				tourDistance = tourDistance + changeDistance;
 			}
 		}
 	}
 	cout << "New Tour Distance: " << tourDistance << endl;
 	cout << "checking new tour distance: " << calculateTourDistance(points) << endl;
-	tourDistance = calculateTourDistance(points);
+	tourDistance = calculateTourDistance(points); //doublecheck out results
 }
 
 
 void Graph::greedy2OPTTSP(vector <Point>&points, int &tourDistance)
 {
 	int changeDistance;
-	int ACBD; //edges to be tested
+	int ACBD; //edges to be compared
 	int ABCD;
 
 	//0 and 1, 1 and 2, 2 and 3,..., 75 and 0
-	for(unsigned int i = 0; i < points.size(); i++)
+	for(unsigned int i = 0; i < points.size(); i++) 
 	{
 		ABCD = points[i].distanceTo(points[i+1]) + points[i+2].distanceTo(points[i+3]); //ABCD
 		ACBD = points[i].distanceTo(points[i+2]) + points[i+1].distanceTo(points[i+3]); //ACBD
@@ -122,11 +122,11 @@ void Graph::greedy2OPTTSP(vector <Point>&points, int &tourDistance)
 		if(ACBD < ABCD) //[1-2-3-4]-5-6
 		{
 			cout << "is this ever happening" << endl;
-			changeDistance = ABCD-ACBD;
+			changeDistance = ABCD-ACBD; //improved distance
 			tourDistance = tourDistance-changeDistance;
-			iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c
+			iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c, aka cities
 			if(calculateTourDistance(points) > tourDistance)
-			{
+			{ //if not actually improved, swap back
 				iter_swap(points.begin() + i+1, points.begin() + i+2); //swap b and c back
 				tourDistance = tourDistance + changeDistance;
 			}
@@ -134,7 +134,7 @@ void Graph::greedy2OPTTSP(vector <Point>&points, int &tourDistance)
 	}
 	cout << "New Tour Distance: " << tourDistance << endl;
 	cout << "checking new tour distance: " << calculateTourDistance(points) << endl;
-	tourDistance = calculateTourDistance(points);
+	tourDistance = calculateTourDistance(points); //doublecheck again to make sure we have the correct tour distance
 }
 
 //calculate tour distance
@@ -143,13 +143,13 @@ int Graph::calculateTourDistance(vector <Point> &points)
 	int tourDistance = 0;
 	int testDistance;
 
-	for(unsigned int i = 0; i < points.size()-1; i++)
+	for(unsigned int i = 0; i < points.size()-1; i++) //go through cities and calculate total distance
 	{
-		testDistance = points[i].distanceTo(points[i+1]);
-		tourDistance = tourDistance + testDistance;
+		testDistance = points[i].distanceTo(points[i+1]); //next chunk
+		tourDistance = tourDistance + testDistance; //add chunk
 	}
-	testDistance = points[points.size()-1].distanceTo(points[0]);
-	tourDistance = tourDistance + testDistance;
+	testDistance = points[points.size()-1].distanceTo(points[0]); //connect last city to first
+	tourDistance = tourDistance + testDistance; //add last chunk
 
 	return tourDistance;
 }

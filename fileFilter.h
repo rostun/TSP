@@ -16,9 +16,9 @@ using namespace std;
 
 #include "point.h"
 
-int openFile(ifstream& readFile, string fileName);
-void extractLines(ifstream& readFile, string fileName, vector<string> &myArrays);
-void extractInts(vector<string> &myArrays, int row, vector<int> &paArray);
-void outputFile(vector <Point>&points, int tourDistance, ofstream& writeFile);
+int openFile(ifstream& readFile, string fileName); //opens file 
+void extractLines(ifstream& readFile, string fileName, vector<string> &myArrays); //extracts lines as strings
+void extractInts(vector<string> &myArrays, int row, vector<int> &paArray); //converts string to integers
+void outputFile(vector <Point>&points, int tourDistance, ofstream& writeFile); //writes final tour to file
 
 #endif // FILEFILTER_H_INCLUDED

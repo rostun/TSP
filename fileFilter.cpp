@@ -34,29 +34,29 @@ void extractLines(ifstream& readFile, string fileName, vector<string> &myArrays)
 }
 
 void extractInts(vector<string> &myArrays, int row, vector<int> &paArray) {//also can check if character is numeric
-	string line = myArrays[row];
+	string line = myArrays[row]; //store current string we're looking at into line
 	
-	string number;
-	int num;
-	int counter = 0; 
+	string number; //string version of cityID or X or Y value
+	int num; //number version of cityID or X or Y value
+	int counter = 0; //1 cityID 2 X 3 Y
 
-	for (int place = 0; place<=line.size(); place++)
+	for (int place = 0; place<=line.size(); place++) //go throuhg row
 	{
-		if(line[place] == ' ' || place == line.size()) {
-			if(number.size() > 0)
+		if(line[place] == ' ' || place == line.size()) { //if we hit a space or the end of the line
+			if(number.size() > 0) //if there's something to convert
 			{
-				num = atoi(number.c_str());
-				paArray.push_back(num);
-				if(counter == 3){
+				num = atoi(number.c_str()); //convert our string into a number
+				paArray.push_back(num); //push into our integer vector
+				if(counter == 3){ //reset counter, might not really need
 					counter = 0;
 				}
 				else{
-					counter++;
+					counter++; //move counter up
 				}
-				number.clear();
+				number.clear(); //make room for next "number"
 			}
 		}
-		else{
+		else{ 
 			number.push_back(line[place]); //keep pushing back characters
 		}
 	}
@@ -64,9 +64,9 @@ void extractInts(vector<string> &myArrays, int row, vector<int> &paArray) {//als
 
 void outputFile(vector <Point>&points, int tourDistance, ofstream& writeFile) {
 	cout << "outputting" << endl;
-	writeFile << tourDistance << endl;
+	writeFile << tourDistance << endl; //tourdistance double checked at this point
 	for (unsigned int place = 0; place < points.size(); place++) 
-	{
+	{	//get cityID from our point objects
 		writeFile << points[place].getCityID() << endl;
 	}
 }

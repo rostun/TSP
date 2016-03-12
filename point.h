@@ -22,7 +22,7 @@ class Point
 		int getXCoord();
 		int getYCoord();
 
-		int distanceTo(Point& c);
+		int distanceTo(Point& c); //in main, point1.distanceTo(point2)
 };
 
 #endif
